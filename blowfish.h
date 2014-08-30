@@ -23,23 +23,23 @@ using std::string;
 class Blowfish
 {
     static const unsigned char N = 16;
-    //мантиса Pi
+    // mantissa Pi
     static const u_int ORIG_P[N + 2];
     static const u_int ORIG_S[4][256];
 
-    //раундовые ключи
+    // round keys
     u_int P[N + 2];
-    //S-блоки
+    // S-blocks
     u_int S[4][256];
-    /* шифрует 64-битный блок модификацией сети Фейстеля
-    *  раундовый ключ не передается функции итерации, а xor'ится с левым подблоком
+    /* encrypts a 64-bit block Feistel network modification
+    *  round key is not passed to the function iteration and does exclusive or with the left subblock
     */
     void encryptBlock(u_int *high, u_int *low);
 
-    //дешифрует 64-битный блок(то же самое, только раундовые ключи в обратном порядке)
+    // decrypts 64-bit block (the same, only the round keys in reverse order)
     void decryptBlock(u_int *high, u_int *low);
 
-    //функция итерации для сети Фейстеля
+    // iteration function for a Feistel network
     u_int iterationFunc(u_int x);
 public:
     Blowfish();
