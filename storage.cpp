@@ -41,7 +41,7 @@ string Storage::hex(const u_char* bytes, u_int len)
     char *buff = new char[len*2+1];
     memset(buff, 0, len*2+1);
     int curr = 0;
-    for (int i = 0; i < len; i++)
+    for (u_int i = 0; i < len; i++)
         curr += sprintf(buff+curr, "%02x",bytes[i]);
     res.assign(buff);
     delete buff;
@@ -51,7 +51,7 @@ string Storage::hex(const u_char* bytes, u_int len)
 string Storage::bytes(const string &hex)
 {
     string res;
-    for (int i = 0; i < hex.size(); i+=2)
+    for (size_t i = 0; i < hex.size(); i+=2)
     {
         u_char byte;
         if (hex[i] >= '0' && hex[i] <= '9')
